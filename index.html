@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  
+     <title>MWG eMagazine</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <script src="/flipBook-march2017/Scripts/jquery-1.12.2.min.js"></script>
+   <script src="/flipBook-march2017/Scripts/hash.js"></script>
+   
+
+    <link rel='shortcut icon' type='image/x-icon' href='/flipBook-march2017//favicon.ico' />
+
+
+<style>
+
+
+img { 
+    image-rendering: optimizeSpeed;             /*                     */
+    image-rendering: -moz-crisp-edges;          /* Firefox             */
+    image-rendering: -o-crisp-edges;            /* Opera               */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and Safari) */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed       */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                */
+
+
+transition : none !important;
+
+-webkit-transform: none !important;
+    -moz-transform: none !important;
+    -o-transform: none !important;
+    -ms-transform: none !important;
+    transform: none !important;
+
+
+   
+    }
+
+</style>
+
+
+
+
+
+
+    <script lang="ja" type="text/javascript">
+        var ROOT = '/flipBook-march2017/';
+        var checkissuespreview, strLogin, isLoginRequired, isSignOut = 1, session_value = "", isEnglish = 0, displaymode = 'S', isMobile = 'False';
+
+        //var Pub_RootPath = 'Publications/flipBook-march2017/MWG/';
+        var Pub_RootPath = ROOT + 'Publications/MWG/MWG/';
+        var datePath = '01_03_2017';
+        var urlProductName = 'flipBook-march2017';
+        var urlIssueDate = '01_03_2017';
+        var publicationId = '2017';
+        var editionId = '2017';
+        var currentUrl = '/flipBook-march2017/';
+
+        var isLoginRequired = false;
+        var username =  '';
+        //thumbnail xml 
+        var dayIndex = $('<Book>  <Page thumbSrc="01_03_2017_001" pageNum="001" sectionTitle="page1" secPageNum="1" />  <Page thumbSrc="01_03_2017_002" pageNum="002" sectionTitle="page2" secPageNum="2" />  <Page thumbSrc="01_03_2017_003" pageNum="003" sectionTitle="page3" secPageNum="3" />  <Page thumbSrc="01_03_2017_004" pageNum="004" sectionTitle="page4" secPageNum="4" />  <Page thumbSrc="01_03_2017_005" pageNum="005" sectionTitle="page5" secPageNum="5" />  <Page thumbSrc="01_03_2017_006" pageNum="006" sectionTitle="page6" secPageNum="6" />  <Page thumbSrc="01_03_2017_007" pageNum="007" sectionTitle="page7" secPageNum="7" /></Book>');
+
+        //weblinks xml 
+        var strWebLinks = '<weblinks>  <links page="01_03_2017_001" width="1000"> <link left="177" top="1070" width="235" height="45" type="websitelink" linkaction="gsez.com" displayname="www.gsez.com" /> <link left="700" top="950" width="120" height="120" type="video" linkaction="//www.youtube.com/embed/7IVIvUYgGUY?ecver=1" displayname="Gabon Special Economic Zone" />  </links>  </weblinks>';
+        var objWebLinks = $(strWebLinks);
+
+        //IssueTabs xml 
+        var IssueTabs = '';
+        var objIssueTabs;
+        var EnableTabs = false;
+        if (IssueTabs != "") {
+            EnableTabs = true;
+            objIssueTabs = $(IssueTabs);
+        }
+        else {
+            EnableTabs = false;
+        }
+        
+
+        var pagesLength = dayIndex.find('Page').length;
+
+
+        displaymode = 'D';
+        var layoutType = 'm';
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            isMobile = true;
+        }
+        else {
+            isMobile = false;
+        }
+        //var isMobile = 'False';
+
+       // var test = 'E:\Pressmart\Anax\eReplica\eReplicaV1.1_Mobility\Publications\MWG\MWG\01_03_2017\weblinks.xml';
+        //var is_link_xml_exist = 'True';  //temparary after menu.xml we need to delete and change the code 
+
+         
+        var defaultpage = window.location.hash.substr(1);
+        function getHashValue(key) {
+            var matches = location.hash.match(new RegExp(key+'=([#]*)'));
+            return matches ? matches[1] : null;
+
+        }
+          
+        // usage
+        var hash = getHashValue('');
+        
+      
+    </script>
+   
+
+    <script src="/flipBook-march2017/Scripts/index.js"></script>
+  
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/flipBook-march2017/Content/bootstrap/css/bootstrap-dialog.css" rel="stylesheet" />
+    <link href="/flipBook-march2017/Content/css/jquery.Jcrop.min.css" rel="stylesheet" />
+    <link href="/flipBook-march2017/Content/css/style.css" rel="stylesheet" />
+    <link href="/flipBook-march2017/Content/css/social-share.css" rel="stylesheet" />
+    <link href="/flipBook-march2017/Content/css/loader.css" rel="stylesheet" />
+    <link href="/flipBook-march2017/Content/bootstrap/css/bootstrap-tour.min.css" rel="stylesheet" />
+
+
+        <style>
+            .bottom-thumbs .item
+            {
+                margin: 3px;
+                padding: 3px;
+                /*background: url('../Content/magazine/images/loading.gif') no-repeat center center*/
+                cursor: pointer;
+                outline: 2px solid #808080;
+            }
+
+                .bottom-thumbs .item img
+                {
+                    display: inline-block!important;
+                    width: 50%;
+                    height: auto;
+                }
+
+                .bottom-thumbs .item span
+                {
+                    position: static !important;
+                    font-size: 12px !important;
+                    background: none !important;
+                }
+
+
+            #full-page-container
+            {
+                display:none;
+            }
+        </style>
+
+    <style>
+        /*.main-title .hidden-xs.big-logo {
+          border: 2px solid #4fccff;
+          float: left;
+          height: 100% !important;
+          margin: 0 !important;
+          width: 100%;
+        }
+
+          .main-title {
+          border: 4px solid #085271;
+          border-radius: 5px;
+          float: left;
+          height: 35px;
+          margin: 2px 5px;
+          width: 201px;
+}*/
+
+        .row
+        {
+            margin: 0;
+            padding: 0;
+        }
+
+        .searchbox
+        {
+            display: block;
+        }
+
+        #searchbox-show
+        {
+            display: none!important;
+        }
+
+        #main-title
+        {
+            padding: 0 5px;
+            height: inherit;
+        }
+
+            #main-title img.big-logo
+            {
+                /*height: inherit;*/
+            }
+
+
+
+        /* Smartphones (portrait and landscape) ----------- */
+        @media only screen and (min-device-width : 320px) and (max-device-width : 780px)
+        {
+            .searchbox
+            {
+                height: 75px; /*calc(100% - 69px);*/
+                overflow: hidden;
+                display: none;
+                position: absolute;
+            }
+
+                .searchbox form
+                {
+                    background-color: #fff;
+                }
+
+            #searchbox-show
+            {
+                display: inline-block!important;
+            }
+        }
+
+
+        /* iPads (portrait and landscape) ----------- */
+        @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)
+        {
+            .searchbox
+            {
+                height: 75px; /*calc(100% - 69px);*/
+                overflow: hidden;
+                display: none;
+                position: absolute;
+            }
+
+                .searchbox form
+                {
+                    background-color: #fff;
+                }
+
+            #searchbox-show
+            {
+                display: inline-block!important;
+            }
+        }
+
+        /* Desktops ,laptops and Large screens----------- */
+        @media only screen and (min-width : 1224px),screen and (min-width : 1824px)
+        {
+            .searchbox
+            {
+                display: inherit!important;
+            }
+
+            #searchbox-show
+            {
+                display: none!important;
+            }
+        }
+
+
+        /*footer css*/
+        .footer
+        {
+            clear: both;
+            background: #EDEFF1;
+            height: auto;
+            margin-top: 30px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px solid #CCCCCC;
+            border-top: 1px solid #DDDDDD;
+        }
+
+            .footer p
+            {
+                margin: 0;
+            }
+
+            .footer img
+            {
+                max-width: 100%;
+            }
+
+        .footer-bottom
+        {
+            background: #737070;
+            border-top: 1px solid #DDDDDD;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+            .footer-bottom p.pull-left
+            {
+                padding-top: 6px;
+            }
+
+        .payments
+        {
+            font-size: 1.5em;
+        }
+
+        #liLogin
+        {
+            display: none;
+        }
+
+    </style>
+
+     
+
+</head>
+<body>
+    <div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+    <div id="full-page-container">
+    <div id="divMore">
+        <nav class="side-menu">
+            <ul>
+                <!--<li id="page-print"><span class="glyphicon glyphicon-print"></span>Print</li>-->
+             <!-- <li id="bookmarks"><span class="glyphicon glyphicon-bookmark"></span>Bookmarks</li>-->
+              <li id="full-screen"><span class="glyphicon glyphicon-fullscreen"></span>Full Screen</li>
+              <!--<li id="page-save"><span class="glyphicon glyphicon-save"></span>Save</li>-->
+              <li id="display-mode" title="Single" now-mode="double"><span><i class="fa fa-file-o"></i></span>1-Page View</li>
+                <!--<li title="Login" id="liLogin"><span class="glyphicon glyphicon-user"></span>Login</li>-->
+          </ul>
+        </nav>
+    </div>
+
+    <div id="divArchives">
+        <nav class="side-menu">
+            <div class="row">
+                <div class="col-xs-8 col-md-8 col-md-offset-2 colsm-offset-2">
+                    <h4 style="color:#b81d18;"><i class="fa fa-calendar" aria-hidden="true"></i> Back Issues</h4>
+                    <div id="BackissuesList" class="col-xs-12 col-md-12" style="margin-top: 10px; text-align: center;padding-bottom:30px;">                    </div>
+                </div>
+          </div>
+        </nav>
+    </div>
+
+    <div id="overlay-back"></div>
+    <div class="wrapper">
+        <header>
+            <div id="main-title">
+                <img class="hidden-xs big-logo" style="width:200px;max-height:35px;margin:2px 0px;" src="/flipBook-march2017/Publications/MWG/MWG//config/images/MWI-logo.png" />
+ 
+                <img class="visible-xs" src="/flipBook-march2017/Content/images/MWI-logo.png" />
+            </div>
+            <div class="pagination-custom col-sm-offset-3 hidden-xs">
+                <ul>
+                    <li id="btn-first-page"><span class="glyphicon glyphicon-backward"></span></li>
+                  <li id="btn-prev-page" style="font-size: 15px;"><span class="glyphicon glyphicon-triangle-left"></span></li>
+              <li class="page-number">
+                        <input class="pageNum page-number" autocomplete="off" name="pageNum" id="pageNum" type="text" style="text-transform: uppercase" /></li>
+                    <li id="btn-next-page" style="font-size: 15px;"><span class="glyphicon glyphicon-triangle-right"></span></li>
+                  <li id="btn-last-page"><span class="glyphicon glyphicon-forward"></span></li>
+              </ul>
+            </div>
+
+            <div id="top-nav">
+                <nav>
+                    <ul>
+                        <li id="clip-page" style="display: none;"><span class="fa fa-search-plus"></span></li>
+                        <!--<li id="crop-page" title="Crop and Share"><span class="fa fa-crop"></span></li>-->
+                        
+                       <!-- <li id="searchbox-show"><span class="fa fa-search"></span></li>-->
+                        <!--<li id="link-share" title="Share"><span><i class="fa fa-share-alt"></i></span></li>-->
+                        <!--<li id="back-issues" title="back-issues"><span class="fa fa-calendar un-click"></span></li>-->
+                        <li id="more" title="More"><span class="fa fa-bars un-click"></span></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!--<div id="search-box" class="col-sm-6 col-md-2 container searchbox navbar-right">
+                <div class="navbar-form" role="search" style="float: right;">
+                    <div class="input-group">
+                        <input id="txtSearchText" type="text" class="form-control" placeholder="Search" name="q" autocomplete="off" onKeyPress="GotoPageOnKeyPress(event,'basicsearch');"/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit" onClick="return getSearchResults();"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+      </header>
+        <div id="container">
+            
+            <input type="hidden" name="imgX1" id="imgX1" />
+            <input type="hidden" name="imgY1" id="imgY1" />
+            <input type="hidden" name="imgWidth1" id="imgWidth1" />
+            <input type="hidden" name="imgHeight1" id="imgHeight1" />
+
+            <input type="hidden" name="imgX2" id="imgX2" />
+            <input type="hidden" name="imgY2" id="imgY2" />
+            <input type="hidden" name="imgWidth2" id="imgWidth2" />
+            <input type="hidden" name="imgHeight2" id="imgHeight2" />
+
+            <input type="hidden" name="imgOrginalSizes" id="imgOrginalSizes" />
+            <div class="main-container">
+                
+
+
+<script src="/flipBook-march2017/Scripts/modernizr.2.5.3.min.js"></script>
+
+
+
+<link href="/flipBook-march2017/Content/css/jquery.Jcrop.min.css" rel="stylesheet" />
+<script src="/flipBook-march2017/Scripts/magazine.js"></script>
+<script src="/flipBook-march2017/Scripts/turn.js"></script>
+
+  <style type='text/css'>
+        .magazine-viewport .magazine-container
+        {
+           position: absolute; 
+            top: 50%;
+            left: 50%;
+            margin:auto;
+            width: 100%; 
+            
+        }
+        .magazine-viewport .magazine
+        {
+            left: -461px;
+            top: -300px;
+
+;
+            width: 1200px;
+            height:833px;
+        }
+
+
+        .btn span.glyphicon {    			
+	        opacity: 0;				
+        }
+        .btn.active span.glyphicon {				
+	        opacity: 1;				
+        }
+       .navbar
+        {
+         /**display:none;*/
+        }
+
+     
+
+
+        /*wd 1200 ht 786*/
+        /*wd 800 ht 524*/
+    </style>
+  
+
+   
+ 
+
+ 
+ 
+
+<!-- Modal HTML -->
+ 
+
+
+ 
+
+    <div id="LeftBannerAd" style="float:left;">
+
+  
+</div>
+ 
+<div id="mag-container"> 
+    <div id="canvas"> 
+    <div style="display:none" class="zoom-icon zoom-icon-in"></div>
+    <div class="magazine-viewport common-container">
+	<div class="magazine-container">
+		<div class="magazine common-holder">
+			<!-- Next button -->
+			<div ignore="1" class="next-button"></div>
+			<!-- Previous button -->
+			<div ignore="1" class="previous-button"></div>
+		</div>
+	</div>
+
+    
+</div>
+
+<!-- Thumbnails -->
+ 
+</div>
+ </div>
+ 
+
+
+<script type="text/javascript">
+    // Load the HTML4 version if there's not CSS transform
+   
+    yepnope({
+        test: Modernizr.csstransforms,
+    yep: ['/flipBook-march2017/Scripts/turn.js'],
+    nope: ['/flipBook-march2017/Scripts/turn.html4.min.js'],
+    both: ['/flipBook-march2017/Scripts/zoom.min.js', '/flipBook-march2017/Content/css/magazine.css'],
+        complete: function () {
+            
+            getPageNames();
+        //loadApp();
+        //window.setTimeout(function () { resizeViewport(); }, 1500);
+    }
+});
+  
+
+
+</script>
+
+
+            </div>
+
+            
+
+            <div id="full-screen-menu" class="draggable-div panel" style="display: none; min-width: 280px;">
+                <div class="text-center panel-body">
+                    <span class="btn" id="sizing-addon1" style="cursor: move; color: #fff;"><i class="fa fa-arrows"></i></span>
+                    <button type="button" id="button_fbw" class="btn btn-sm" onclick='getPage("first");'>
+                        <i class="fa fa-fast-backward"></i>
+                    </button>
+
+                    <button type="button" id="button_bw" class="btn btn-sm" onclick='getPage("prev");'>
+                        <i class="fa fa-backward"></i>
+                    </button>
+                    <button type="button" id="button_play" class="btn btn-sm" onclick='turnPlayToggle(this);'>
+                        <i class="fa fa-play"></i>
+                    </button>
+
+                    <button type="button" id="button_fw" class="btn btn-sm" onclick='getPage("next");'>
+                        <i class="fa fa-forward"></i>
+                    </button>
+
+                    <button type="button" id="button_ffw" class="btn btn-sm" onclick='getPage("last");'>
+                        <i class="fa fa-fast-forward"></i>
+                    </button>
+
+                    <button type="button" id="btn_exit_flsc" class="btn btn-sm btn-warning" onclick='exitfullscreen();'>
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+
+            </div>
+
+
+
+            <!--/.footer-->
+            <footer>
+                <div class="footer" id="footer">
+                    <div class="footer-bottom">
+                        <div class="container" style="margin: 0;">
+                            <p class="pull-left">&copy; Modern Woodwork India.</p>
+                            <div class="pull-right">
+                                <a href="http://www.modernwoodworkindia.com/" title="Modern Woodwork India" target="_blank">
+                                <img src="/flipBook-march2017/Content/images/MWI-logo.png" alt="Powered by Pressmart"
+                                    style="float: right; vertical-align: middle;" />
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--/.footer-->
+        </div>
+
+    </div>
+
+
+    
+    <div class="row">
+        <div id="bottom-thums-panel" class="text-center col-md-12 col-sm-12">
+            <div id="thubsHideShow">
+                <a id="ThumbPanelHideShow" class="ad-hide-show btn btn-primary btn-xs" href="javascript:void(0)">
+                    <i class="fa fa-angle-double-up"></i><span>Show Thumbnails</span> <i class="fa fa-angle-double-up"></i></a>            </div>
+            <div id="thumbnails" class="panel panel-primary" style="border-color: #1a1a1a;">
+                <link href="/flipBook-march2017/Content/css/owl.carousel.css" rel="stylesheet" />
+<style>
+   /* .bottom-thumbs .item
+    {
+        margin: 3px;
+        padding: 3px;
+        /*background: url('../Content/magazine/images/loading.gif') no-repeat center center
+        cursor: pointer;
+        outline: 2px solid #808080;
+    }
+
+        .bottom-thumbs .item img
+        {
+            display: inline-block!important;
+            width: 50%;
+            height: auto;
+        }*/
+
+    #thumbnails
+    {
+            background-color: rgba(14, 14, 14, 0.70)!important;
+    }
+
+        .bottom-thumbs .item
+        {
+            position: relative;
+        }
+
+     .bottom-thumbs .item span
+        {
+            position: absolute;
+            font-size: 15px;
+            bottom: 0;
+            left: 40%;
+            background: #353535;
+            color: #fff;
+            padding: 3px;
+            min-width: 25px;
+        }
+
+
+
+</style>
+
+<div id="thumbnailsContainer" class="owl-carousel panel-body bottom-thumbs"></div>
+
+
+<div id="singleThumbnailsContainer" class="owl-carousel panel-body bottom-thumbs"></div>
+
+
+
+<script src="/flipBook-march2017/Scripts/owl.carousel.js"></script>
+
+<script src="/flipBook-march2017/Scripts/thumbnails.js"></script>
+            </div>
+        </div>
+</div>
+
+    <div id="SearchModal" class="modal modal-wide fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div id="search_content"></div>
+                </div>
+                <div class="modal-footer">
+                    <span id="s_loading" style="float: left;"></span>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div id="CropModal" class="modal fade" clip-id="">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+       
+        <ul id="sbLinks" class="nav navbar-nav mobile-bar">
+            </ul>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div> 
+
+                <div class="modal-body">
+                  
+                    <div id="crop_content" style="text-align: center;">
+                        <canvas id="crop_canvas" height="5" width="5" class="img-thumbnail"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" id="crop-download" href="#">Download</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div id="TOCModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Table of Contents</h4>
+                </div> 
+                <div class="modal-body" style="overflow:auto;">
+                        <div id="TOCdata" class="list-group panel">                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onClick="saveCropImage();">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+
+
+        <div id="SendEmailModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Quick Contact</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal col-sm-12" action="javascript:sendMail();">
+          <div class="form-group"><label>Name</label><input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text"></div>
+          <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Your message here.." data-placement="top" data-trigger="manual"></textarea></div>
+          <div class="form-group"><label>E-Mail</label><input class="form-control email" placeholder="email@you.com (so that we can contact you)" data-placement="top" data-trigger="manual" data-content="Must be a valid e-mail address (user@gmail.com)" type="text"></div>
+          <div class="form-group"><label>Phone</label><input class="form-control phone" placeholder="999-999-9999" data-placement="top" data-trigger="manual" data-content="Must be a valid phone number (999-999-9999)" type="text"></div>
+          <div class="form-group"><button type="submit" class="btn btn-success pull-right">Send It!</button> <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not valid. </p></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div> 
+    <input type="hidden" id="hdn_pageNum" /> 
+</div>
+</body>
+ 
+ 
+<script src="/flipBook-march2017/Content/bootstrap/js/bootstrap.min.js"></script>
+<script src="/flipBook-march2017/Content/bootstrap/js/bootstrap-dialog.min.js"></script>
+<script src="/flipBook-march2017/Content/bootstrap/js/bootstrap-tour.min.js"></script>
+<script src="/flipBook-march2017/Scripts/jquery.fullscreen-0.4.2.min.js"></script>
+<script src="/flipBook-march2017/Scripts/jquery.Jcrop.min.js"></script>
+<script src="/flipBook-march2017/Scripts/jquery.viewport.mini.js"></script>
+<script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
+<script src="/flipBook-march2017/Scripts/menu-events.js"></script>
+<script src="/flipBook-march2017/Scripts/social-crop-share.js"></script>
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#searchbox-show, .navbar-more-overlay').on('click', function (event) {
+
+            event.preventDefault();
+            $('body').toggleClass('searchbox-show');
+            if ($('body').hasClass('searchbox-show')) {
+                $('#searchbox-show').closest('li').addClass('active');
+                $('#search-box').slideDown();
+            } else {
+                $('#searchbox-show').closest('li').removeClass('active');
+                $('#search-box').slideUp();
+            }
+            return false;
+        });
+    });
+
+    if (isLoginRequired) {
+        $('#liLogin').show();   //temp code -- need to be configure
+    }
+
+
+</script>
+
+</html>
+   

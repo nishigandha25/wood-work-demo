@@ -1,0 +1,62 @@
+﻿    .navbar-nav.mobile-bar > li {
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+        text-align: center;
+        margin: 2px;
+    }
+
+     #sbLinks a.fa-facebook-btn
+    {
+        color: #fff;
+        background-color: #3b5998;
+        border-color: rgba(0,0,0,0.2);
+    }
+
+    #sbLinks a.fa-twitter-btn
+    {
+        color: #fff;
+        background-color: rgb(23, 165, 226);
+        border-color: rgba(0,0,0,0.2);
+    }
+
+    #sbLinks a.fa-delicious-btn
+    {
+        color: #fff;
+        background-color: rgb(41, 80, 168);
+        border-color: rgba(0,0,0,0.2);
+    }
+
+    #sbLinks a.fa-stumbleupon-circle-btn
+    {
+        color: #fff;
+        background-color: rgb(33, 184, 83);
+        border-color: rgba(0,0,0,0.2);
+    }
+
+    #sbLinks a.fa-digg-btn
+    {
+        color: #fff;
+        background-color: rgb(36, 91, 138);
+        border-color: rgba(0,0,0,0.2);
+    }
+
+    #sbLinks a.fa-linkedin-btn
+    {
+        color: #fff;
+        background-color: #0177B5;
+        border-color: rgba(0,0,0,0.2);
+    }
+
+    #sbLinks a.fa-google-plus-btn
+    {
+        color: #fff;
+        background-color: rgb(213, 69, 58);
+        border-color: rgba(0,0,0,0.2);
+    }
+     #sbLinks a.fa-whatsapp-btn
+    {
+        color: #fff;
+        background-color:#009688;
+        border-color: rgba(0,0,0,0.2);
+    }
+    
